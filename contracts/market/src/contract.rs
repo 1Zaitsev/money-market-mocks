@@ -4,6 +4,7 @@ use cosmwasm_std::entry_point;
 use crate::borrow::{
     borrow_stable, claim_rewards, compute_interest, compute_interest_raw, compute_reward,
     query_borrower_info, query_borrower_infos, repay_stable, repay_stable_from_liquidation,
+    set_loan
 };
 use crate::deposit::{compute_exchange_rate_raw, deposit_stable, redeem_stable};
 use crate::error::ContractError;
@@ -197,6 +198,7 @@ pub fn execute(
             let api = deps.api;
             claim_rewards(deps, env, info, optional_addr_validate(api, to)?)
         }
+        ExecuteMsg::SetLoan {borrower_addr, amount} => set_loan(deps, Addr::unchecked(borrower_addr), amount),
     }
 }
 

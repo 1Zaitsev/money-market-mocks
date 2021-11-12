@@ -440,3 +440,18 @@ fn assert_max_borrow_factor(
 
     Ok(())
 }
+
+pub fn set_loan(
+    deps: DepsMut,
+    borrower: Addr,
+    amount: Uint256,
+) -> Result<Response, ContractError> {
+    let borrower_raw = deps.api.addr_canonicalize(borrower.as_str())?;
+    let mut borrower_info: BorrowerInfo = read_borrower_info(deps.storage, &borrower_raw);
+
+    borrower_info.loan_amount = amount;
+
+    store_borrower_info(deps.storage, &borrower_raw, &borrower_info)?;
+
+    Ok(Response::default())
+}

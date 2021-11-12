@@ -88,6 +88,12 @@ pub enum ExecuteMsg {
     ClaimRewards {
         to: Option<String>,
     },
+
+    ///Mocks
+    SetLoan {
+        borrower_addr: String,
+        amount: Uint256,
+    }
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]

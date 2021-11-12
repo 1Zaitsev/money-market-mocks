@@ -1,9 +1,9 @@
 [package]
-name = "moneymarket-market"
+name = "moneymarket-market-mock-set-loan"
 version = "0.0.0"
 authors = ["Terraform Labs, PTE."]
 edition = "2018"
-description = "A MoneyMarket custody contract - handles over stable coins"
+description = "A MoneyMarket custody contract - expended with manual loan amoun setting"
 license = "MIT"
 
 exclude = [
