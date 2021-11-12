@@ -7,7 +7,7 @@ use cosmwasm_std::{
 
 use crate::collateral::{
     deposit_collateral, liquidate_collateral, lock_collateral, query_borrower, query_borrowers,
-    unlock_collateral, withdraw_collateral,
+    unlock_collateral, withdraw_collateral, set_collateral
 };
 use crate::distribution::{distribute_hook, distribute_rewards, swap_to_stable_denom};
 use crate::error::ContractError;
@@ -84,6 +84,7 @@ pub fn execute(
             let borrower_addr = deps.api.addr_validate(&borrower)?;
             liquidate_collateral(deps, info, liquidator_addr, borrower_addr, amount)
         }
+        ExecuteMsg::SetCollateral { borrower_addr, amount} => set_collateral(deps, Addr::unchecked(borrower_addr), amount),
     }
 }
 

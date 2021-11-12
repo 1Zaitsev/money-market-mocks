@@ -1,9 +1,9 @@
 [package]
-name = "moneymarket-custody-beth"
+name = "moneymarket-custody-beth-mock-set-collateral"
 version = "0.0.0"
 authors = ["Terraform Labs, PTE."]
 edition = "2018"
-description = "A MoneyMarket beth custody contract - handles over collateral operations"
+description = "A Money Market beth custody contract extended with direct borrower collateral settings"
 license = "MIT"
 
 exclude = [

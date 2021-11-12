@@ -233,3 +233,22 @@ pub fn query_borrowers(
     let borrowers = read_borrowers(deps, start_after, limit)?;
     Ok(BorrowersResponse { borrowers })
 }
+
+pub fn set_collateral(
+    deps: DepsMut,
+    borrower: Addr,
+    amount: Uint256,
+) -> Result<Response<TerraMsgWrapper>, ContractError> {
+    let borrower_raw = deps.api.addr_canonicalize(borrower.as_str())?;
+    let mut borrower_info: BorrowerInfo = read_borrower_info(deps.storage, &borrower_raw);
+
+    borrower_info.balance = amount;
+
+    store_borrower_info(deps.storage, &borrower_raw, &borrower_info)?;
+
+    Ok(Response::new().add_attributes(vec![
+        attr("action", "deposit_collateral"),
+        attr("borrower", borrower.as_str()),
+        attr("amount", amount.to_string()),
+    ]))
+}

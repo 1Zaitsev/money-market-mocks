@@ -1,9 +1,9 @@
 [package]
-name = "moneymarket-custody-bluna"
+name = "moneymarket-custody-bluna-mock-set-collateral"
 version = "0.0.0"
 authors = ["Terraform Labs, PTE."]
 edition = "2018"
-description = "A MoneyMarket bluna custody contract - handles over collateral operations"
+description = "A Money Market bluna custody contract extended with direct borrower collateral settings"
 license = "MIT"
 
 exclude = [
